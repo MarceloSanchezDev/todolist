@@ -19,7 +19,7 @@ export default function Register(params) {
       <div className="container d-flex flex-column justify-content-center vh-100">
         <h1 className="text-center">Register</h1>
         <form className="form-group text-center" onSubmit={handleSubmit}>
-          <div className="row d-flex justify-content-center align-items-center border rounded flex-column text-start">
+          <div className="row d-flex justify-content-center align-items-center border rounded flex-column text-start bg-dark text-light">
             <div className="col-4 mb-3">
               <label htmlFor="email" className="label-form p-2">
                 E-mail :
@@ -81,7 +81,10 @@ export default function Register(params) {
           </div>
         </form>
         <div className="row d-flex justify-content-center align-items-center flex-column text-start mt-3">
-          <button className="btn btn-dark col-4" onClick={() => navigate("/")}>
+          <button
+            className="btn btn-dark col-4"
+            onClick={() => navigate("/Home")}
+          >
             Volver
           </button>
         </div>
