@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login(params) {
   const [user, setUser] = useState({
     username: null,
     password: null,
   });
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(Object.entries(user));
@@ -45,6 +46,9 @@ export default function Login(params) {
             </div>
           </div>
         </form>
+        <button className="btn btn-dark" onClick={() => navigate("/")}>
+          Volver
+        </button>
       </div>
     </>
   );
