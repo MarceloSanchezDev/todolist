@@ -33,7 +33,8 @@ Está dividida en dos secciones principales:
 2. Instala las dependencias:
     ```bash
     npm install
-3.inicia la aaplicacion
+3.inicia la aaplicacion:
+    ```bash
     npm start
 
 La aplicación estará disponible en http://localhost:3000.
