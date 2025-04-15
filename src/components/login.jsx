@@ -13,7 +13,7 @@ export default function Login(params) {
   };
   return (
     <>
-      <div className="container">
+      <div className="container d-flex flex-column justify-content-center vh-100">
         <h1 className="text-center">Login</h1>
         <form className="form-group text-center" onSubmit={handleSubmit}>
           <div className="row d-flex justify-content-center align-items-center border rounded flex-column text-start">
@@ -46,9 +46,11 @@ export default function Login(params) {
             </div>
           </div>
         </form>
-        <button className="btn btn-dark" onClick={() => navigate("/")}>
-          Volver
-        </button>
+        <div className="row d-flex justify-content-center align-items-center flex-column text-start mt-3">
+          <button className="btn btn-dark col-4" onClick={() => navigate("/")}>
+            Volver
+          </button>
+        </div>
       </div>
     </>
   );

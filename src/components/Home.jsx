@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 export default function Home() {
   const navigate = useNavigate();
   return (
-    <div className="container">
+    <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
       <h1 className="text-center">Home</h1>
       <p className="text-center">Welcome to the Home page!</p>
       <div className="text-center">
