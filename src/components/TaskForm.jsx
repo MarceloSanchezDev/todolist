@@ -1,6 +1,14 @@
+import { useState } from "react";
 import Button from "./Buttom";
 
-export default function TaskForm({ setTask, handleSubmit, task }) {
+export default function TaskForm({ setTaskList }) {
+  const [task, setTask] = useState({ name: "", completed: false });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(task);
+    setTaskList((prevTasks) => [...prevTasks, task]);
+    setTask({ name: "", completed: false });
+  };
   return (
     <form
       className="d-flex flex-column justify-content-center align-items-center mb-3"
@@ -11,9 +19,9 @@ export default function TaskForm({ setTask, handleSubmit, task }) {
         className="form-control"
         placeholder="Add new task"
         onChange={(e) => {
-          setTask(e.target.value);
+          setTask({ ...task, name: e.target.value });
         }}
-        value={task}
+        value={task.name}
       />
       <Button type={"submit"} bootstrapClass={"btn btn-primary mt-2"}>
         Add Task
