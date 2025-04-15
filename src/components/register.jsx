@@ -17,7 +17,7 @@ export default function Register(params) {
         <h1 className="text-center">Register</h1>
         <form className="form-group text-center" onSubmit={handleSubmit}>
           <div className="row d-flex justify-content-center align-items-center border rounded flex-column text-start">
-            <div className="col-4">
+            <div className="col-4 mb-3">
               <label htmlFor="email" className="label-form p-2">
                 E-mail :
               </label>
@@ -31,7 +31,7 @@ export default function Register(params) {
                 }
               />
             </div>
-            <div className="col-4">
+            <div className="col-4 mb-3">
               <label htmlFor="username" className="label-form p-2">
                 Username :
               </label>
@@ -44,7 +44,7 @@ export default function Register(params) {
                 }
               />
             </div>
-            <div className="col-4">
+            <div className="col-4 mb-3">
               <label htmlFor="" className="label-form p-2">
                 Password :
               </label>
@@ -57,7 +57,7 @@ export default function Register(params) {
                 }
               />
             </div>
-            <div className="col-4">
+            <div className="col-4 mb-3">
               <label htmlFor="" className="label-form p-2">
                 Confirm Password :
               </label>
@@ -70,8 +70,8 @@ export default function Register(params) {
                 }
               />
             </div>
-            <div className="col-4">
-              <button type="submit" className="btn btn-success mt-3">
+            <div className="col-4 mb-3">
+              <button type="submit" className="btn btn-success mb-3">
                 Register
               </button>
             </div>
