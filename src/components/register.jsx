@@ -9,17 +9,7 @@ export default function Register(params) {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { email, username, password, confirmPassword } = newUser;
-    console.log(
-      "email",
-      email,
-      "username",
-      username,
-      "password",
-      password,
-      "confirmPassword",
-      confirmPassword
-    );
+    console.log(Object.entries(newUser));
   };
   return (
     <>

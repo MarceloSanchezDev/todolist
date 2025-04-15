@@ -1,12 +1,14 @@
 import { useState } from "react";
 
 export default function Login(params) {
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [user, setUser] = useState({
+    username: null,
+    password: null,
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("username", username, "password", password);
+    console.log(Object.entries(user));
   };
   return (
     <>
@@ -22,7 +24,7 @@ export default function Login(params) {
                 type="text"
                 id="username"
                 className="form-control"
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setUser({ ...user, username: e.target.value })}
               />
             </div>
             <div className="col-4 mb-3">
@@ -33,7 +35,7 @@ export default function Login(params) {
                 type="password"
                 id="password"
                 className="form-control"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
             </div>
             <div className="col-4 mb-3">
