@@ -35,7 +35,7 @@ Está dividida en dos secciones principales:
     npm install
 3. inicia la aplicacion:
     ```bash
-    npm start
+    npm run dev
 
 La aplicación estará disponible en http://localhost:3000.
 
