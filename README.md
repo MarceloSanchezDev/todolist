@@ -1,12 +1,42 @@
-# React + Vite
+# 📝 TO-DO APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación simple de tareas desarrollada con **React**, ideal para ayudarte a organizar tus pendientes del día a día.
 
-Currently, two official plugins are available:
+## 🚀 Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**TO-DO APP** es una aplicación web que permite gestionar tareas de forma sencilla y efectiva. A través de una interfaz clara e intuitiva, los usuarios pueden agregar nuevas tareas, marcarlas como completadas y eliminarlas si ya no son necesarias.
 
-## Expanding the ESLint configuration
+Está dividida en dos secciones principales:
+- **Tasks**: donde se listan las tareas activas (pendientes).
+- **Tasks Complete**: donde se muestran las tareas que ya fueron completadas.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧩 Funcionalidades
+
+- ✅ Agregar nuevas tareas.
+- 🟢 Marcar tareas como completadas.
+- ❌ Eliminar tareas pendientes.
+- 📋 Visualización separada de tareas activas y completadas.
+- 🎨 Interfaz simple, responsive y fácil de usar.
+
+## 🛠️ Tecnologías utilizadas
+
+- [React](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- JavaScript (ES6+)
+
+## 📦 Instalación
+
+1. Cloná el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/todo-app.git
+   cd todo-app
+2. Instala las dependencias:
+    ```bash
+    npm install
+3.inicia la aaplicacion
+    npm start
+
+La aplicación estará disponible en http://localhost:3000.
+
+
+¡Gracias por probar TO-DO APP! ✨
