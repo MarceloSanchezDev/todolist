@@ -33,7 +33,7 @@ Está dividida en dos secciones principales:
 2. Instala las dependencias:
     ```bash
     npm install
-3.inicia la aaplicacion:
+3. inicia la aplicacion:
     ```bash
     npm start
 
