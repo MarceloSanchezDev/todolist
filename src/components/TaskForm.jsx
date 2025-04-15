@@ -11,7 +11,7 @@ export default function TaskForm({ setTaskList }) {
   };
   return (
     <form
-      className="d-flex flex-column justify-content-center align-items-center mb-3"
+      className="d-flex flex-column justify-content-center align-items-center mb-3 w-100"
       onSubmit={handleSubmit}
     >
       <input
