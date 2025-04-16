@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "./Buttom";
+import Button from "../Buttom/Buttom";
 
 export default function Register() {
   const [newUser, setNewUser] = useState({

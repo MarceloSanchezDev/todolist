@@ -1,7 +1,7 @@
-import { useTaskContext } from "../context/TaskContext";
+import { useTaskContext } from "../../context/TaskContext";
 import Task from "./Task";
 import TaskForm from "./TaskForm";
-import Button from "./Buttom";
+import Button from "../Buttom/Buttom";
 
 export default function NewTasks() {
   const {

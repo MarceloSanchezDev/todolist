@@ -1,5 +1,5 @@
-import { useTaskContext } from "../context/TaskContext";
-import Task from "./Task";
+import { useTaskContext } from "../../context/TaskContext.jsx";
+import Task from "./Task.jsx";
 
 export default function TasksCompleted() {
   const { taskCompleted } = useTaskContext();

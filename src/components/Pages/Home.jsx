@@ -1,5 +1,5 @@
-import Button from "./Buttom";
-import Auth from "./Auth";
+import Button from "../Buttom/Buttom.jsx";
+import Auth from "../Auth/Auth.jsx";
 import { useNavigate } from "react-router";
 
 export default function Home() {

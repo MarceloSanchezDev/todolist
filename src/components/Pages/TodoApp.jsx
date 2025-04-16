@@ -1,7 +1,7 @@
-import Auth from "./Auth";
-import NewTasks from "./newTasks";
-import TasksCompleted from "./TasksCompleted";
-import TasksDeleted from "./TasksDeleted";
+import Auth from "../Auth/Auth.jsx";
+import NewTasks from "../Task/newTasks.jsx";
+import TasksCompleted from "../Task/TasksCompleted.jsx";
+import TasksDeleted from "../Task/TasksDeleted.jsx";
 
 export default function TodoApp() {
   return (

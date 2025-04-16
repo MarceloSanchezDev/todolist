@@ -1,8 +1,8 @@
-import Home from "./components/Home.jsx";
-import Login from "./components/Login.jsx";
-import Register from "./components/Register.jsx";
+import Home from "./components/Pages/Home";
+import Login from "./components/Pages/Login";
+import TodoApp from "./components/Pages/TodoApp.jsx";
+import Register from "./components/Pages/Register.jsx";
 import { Routes, Route } from "react-router";
-import TodoApp from "./components/TodoApp.jsx";
 import { TaskProvider } from "./context/TaskContext.jsx";
 
 function AppContent() {

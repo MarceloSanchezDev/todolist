@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "./Buttom";
+import Button from "../Buttom/Buttom.jsx";
 
 export default function TaskForm({ setTaskList }) {
   const [task, setTask] = useState({ name: "", completed: false });

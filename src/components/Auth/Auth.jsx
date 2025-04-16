@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import Button from "./Buttom";
+import Button from "../Buttom/Buttom.jsx";
 
 export default function Auth() {
   const navigate = useNavigate();
