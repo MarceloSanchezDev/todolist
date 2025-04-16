@@ -22,7 +22,7 @@ export default function NewTasks() {
             return (
               <Task key={index}>
                 <h3 className="text-primary">{task.name}</h3>
-                <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex flex-row justify-content-between align-items-center">
                   <Button
                     bootstrapClass={"btn btn-danger m-1"}
                     onClick={() => {

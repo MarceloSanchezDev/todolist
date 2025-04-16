@@ -10,19 +10,19 @@ export default function TaskForm({ setTaskList }) {
   };
   return (
     <form
-      className="d-flex flex-row justify-content-center align-items-center mb-3 w-100 row"
+      className="row mb-3 w-100 "
       onSubmit={handleSubmit}
     >
       <input
         type="text"
-        className="form-control col me-2"
+        className="rounded me-2  col col-sm-8"
         placeholder="Add new task"
         onChange={(e) => {
           setTask({ ...task, name: e.target.value });
         }}
         value={task.name}
       />
-      <Button type={"submit"} bootstrapClass={"btn btn-primary col-1"}>
+      <Button type={"submit"} bootstrapClass={"btn btn-primary col"}>
         Add Task
       </Button>
     </form>

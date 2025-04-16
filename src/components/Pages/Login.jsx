@@ -14,12 +14,12 @@ export default function Login() {
   };
   return (
     <>
-      <div className="container-fluid d-flex flex-column justify-content-center vh-100 bg-dark text-light">
+      <div className="container-fluid d-flex flex-column justify-content-center min-vh-100 bg-dark text-light">
         <div className="container">
           <h1 className="text-center">Login</h1>
           <form className="form-group text-center " onSubmit={handleSubmit}>
             <div className="row d-flex justify-content-center align-items-center border rounded flex-column text-start bg-secondary text-light">
-              <div className="col-4 mb-3">
+              <div className="col-sm-4 mb-3">
                 <label htmlFor="username" className="form-label p-2">
                   Username :
                 </label>
@@ -32,7 +32,7 @@ export default function Login() {
                   }
                 />
               </div>
-              <div className="col-4 mb-3">
+              <div className="col-sm-4 mb-3">
                 <label htmlFor="password" className="form-label p-2">
                   Password :
                 </label>
@@ -45,7 +45,7 @@ export default function Login() {
                   }
                 />
               </div>
-              <div className="col-4 mb-3">
+              <div className="col-sm-4 mb-3">
                 <Button type={"submit"} bootstrapClass={"btn btn-success"}>
                   Login
                 </Button>
