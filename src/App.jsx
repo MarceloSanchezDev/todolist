@@ -4,6 +4,8 @@ import TodoApp from "./components/Pages/TodoApp.jsx";
 import Register from "./components/Pages/Register.jsx";
 import { Routes, Route } from "react-router";
 import { TaskProvider } from "./context/TaskContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import "./App.css";
 
 function AppContent() {
   return (
@@ -18,9 +20,11 @@ function AppContent() {
 
 function App() {
   return (
-    <TaskProvider>
-      <AppContent></AppContent>
-    </TaskProvider>
+    <AuthProvider>
+      <TaskProvider>
+        <AppContent></AppContent>
+      </TaskProvider>
+    </AuthProvider>
   );
 }
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 import Button from "../Buttom/Buttom";
 
 export default function Login() {
@@ -7,10 +8,12 @@ export default function Login() {
     username: null,
     password: null,
   });
+  const { login } = useAuthContext();
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(Object.entries(user));
+    login(user);
   };
   return (
     <>

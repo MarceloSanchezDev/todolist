@@ -18,8 +18,8 @@ export default function Home() {
           </Button>
         </div>
         <div className="col-12 mb-3 d-flex flex-row justify-content-center align-items-center">
-          <div className="col-6">
-            <img src={""} alt="" />
+          <div className="col-6  desaparecer">
+            <img src={"abc"} alt="" />
           </div>
           <div className="col-6">
             <p>
