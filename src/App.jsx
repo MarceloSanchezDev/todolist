@@ -8,7 +8,7 @@ import { TaskProvider } from "./context/TaskContext.jsx";
 function AppContent() {
   return (
     <Routes>
-      <Route path="/Home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/app" element={<TodoApp />} />

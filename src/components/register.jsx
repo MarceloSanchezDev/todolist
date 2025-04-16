@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Register(params) {
+export default function Register() {
   const [newUser, setNewUser] = useState({
     email: null,
     username: null,
@@ -81,10 +81,7 @@ export default function Register(params) {
           </div>
         </form>
         <div className="row d-flex justify-content-center align-items-center flex-column text-start mt-3">
-          <button
-            className="btn btn-dark col-4"
-            onClick={() => navigate("/Home")}
-          >
+          <button className="btn btn-dark col-4" onClick={() => navigate("/")}>
             Volver
           </button>
         </div>

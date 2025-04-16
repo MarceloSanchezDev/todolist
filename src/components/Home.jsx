@@ -1,4 +1,5 @@
 import Button from "./Buttom";
+import Auth from "./Auth";
 import { useNavigate } from "react-router";
 
 export default function Home() {
@@ -61,18 +62,7 @@ export default function Home() {
             Inicia Sesion O Registrate para guardar tus tareas en curso y tus
             tareas completadas
           </p>
-          <button
-            className="btn btn-primary"
-            onClick={() => navigate("/login")}
-          >
-            Login
-          </button>
-          <button
-            className="btn btn-secondary"
-            onClick={() => navigate("/register")}
-          >
-            Register
-          </button>
+          <Auth></Auth>
         </div>
       </div>
     </div>
