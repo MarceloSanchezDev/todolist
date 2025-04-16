@@ -18,10 +18,7 @@ export default function Home() {
           </Button>
         </div>
         <div className="col-12 mb-3 d-flex flex-row justify-content-center align-items-center">
-          <div className="col-6  desaparecer">
-            <img src={"abc"} alt="" />
-          </div>
-          <div className="col-6">
+          <div className="d-flex flex-column justify-content-center align-items-center border rounded bg-secondary text-light p-3">
             <p>
               TO-DO APP es una aplicación simple y funcional desarrollada con
               React que permite a los usuarios gestionar sus tareas diarias de
