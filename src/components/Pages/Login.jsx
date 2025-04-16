@@ -1,19 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import Button from "../Buttom/Buttom";
 
 export default function Login() {
-  const [user, setUser] = useState({
+  const [userLogin, setUserLogin] = useState({
     username: null,
     password: null,
   });
-  const { login } = useAuthContext();
+  const { login, user } = useAuthContext();
   const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate("/app");
+    }
+  }, [user, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(Object.entries(user));
-    login(user);
+    console.log(Object.entries(userLogin));
+    login(userLogin);
   };
   return (
     <>
@@ -31,7 +36,7 @@ export default function Login() {
                   id="username"
                   className="form-control"
                   onChange={(e) =>
-                    setUser({ ...user, username: e.target.value })
+                    setUserLogin({ ...user, username: e.target.value })
                   }
                 />
               </div>
@@ -44,7 +49,7 @@ export default function Login() {
                   id="password"
                   className="form-control"
                   onChange={(e) =>
-                    setUser({ ...user, password: e.target.value })
+                    setUserLogin({ ...user, password: e.target.value })
                   }
                 />
               </div>

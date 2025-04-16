@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import Button from "../Buttom/Buttom";
@@ -10,8 +10,13 @@ export default function Register() {
     password: null,
     confirmPassword: null,
   });
-  const { login } = useAuthContext();
+  const { login, user } = useAuthContext();
   const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate("/app");
+    }
+  }, [user, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(Object.entries(newUser));

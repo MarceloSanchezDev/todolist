@@ -1,9 +1,20 @@
 import Button from "../Buttom/Buttom.jsx";
 import Auth from "../Auth/Auth.jsx";
 import { useNavigate } from "react-router";
+import { useAuthContext } from "../../context/AuthContext.jsx";
+import { useEffect } from "react";
 
 export default function Home() {
   const navigate = useNavigate();
+
+  const { user } = useAuthContext();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/app");
+    }
+  }, [user, navigate]);
+
   return (
     <div className="container-fluid d-flex flex-column justify-content-center align-items-center min-vh-100 bg-dark text-light">
       <div className="container d-flex flex-column justify-content-center align-items-center p-4 row">
