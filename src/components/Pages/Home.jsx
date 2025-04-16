@@ -56,7 +56,7 @@ export default function Home() {
         </div>
         <div className="text-center col-12 mb-3">
           <p>
-            Inicia Sesion O Registrate para guardar tus tareas en curso y tus
+            Inicia Sesion o Registrate para guardar tus tareas en curso y tus
             tareas completadas
           </p>
           <Auth></Auth>
