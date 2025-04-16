@@ -21,7 +21,7 @@ export default function NewTasks() {
           taskList.map((task, index) => {
             return (
               <Task key={index}>
-                <h3 className="text-info">{task.name}</h3>
+                <h3 className="text-primary">{task.name}</h3>
                 <div className="d-flex justify-content-between align-items-center">
                   <Button
                     bootstrapClass={"btn btn-danger m-1"}
