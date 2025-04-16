@@ -5,7 +5,6 @@ export default function TaskForm({ setTaskList }) {
   const [task, setTask] = useState({ name: "", completed: false });
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(task);
     setTaskList((prevTasks) => [...prevTasks, task]);
     setTask({ name: "", completed: false });
   };
