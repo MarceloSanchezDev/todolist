@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../Buttom/Buttom.jsx";
+import Swal from "sweetalert2";
 
 export default function TaskForm({ setTaskList }) {
   const [task, setTask] = useState({ name: "", completed: false });
@@ -8,7 +9,19 @@ export default function TaskForm({ setTaskList }) {
     if (task.name.length > 4) {
       setTaskList((prevTasks) => [...prevTasks, task]);
       setTask({ name: "", completed: false });
+      Swal.fire({
+        title: "Exito",
+        text: "Tarea agregada correctamente",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
     } else {
+      Swal.fire({
+        title: "Error",
+        text: "La tarea no puede ser menor a 4 caracteres",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
       console.log("la terea no puede ser menor a 4 caracteres");
     }
   };

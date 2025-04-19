@@ -2,6 +2,7 @@ import { useTaskContext } from "../../context/TaskContext";
 import Task from "./Task";
 import TaskForm from "./TaskForm";
 import Button from "../Buttom/Buttom";
+import Swal from "sweetalert2";
 
 export default function NewTasks() {
   const {
@@ -12,6 +13,27 @@ export default function NewTasks() {
     taskDeleted,
     taskCompleted,
   } = useTaskContext();
+
+  const deleteTask = (index, task) => {
+    setTaskDeleted([...taskDeleted, task]);
+    setTaskList(taskList.filter((_, i) => i !== index));
+    Swal.fire({
+      icon: "success",
+      title: "Task deleted",
+      text: `The task ${task.name} has been deleted`,
+    });
+  };
+
+  const completeTask = (index, task) => {
+    setTaskCompleted([...taskCompleted, task]);
+    setTaskList(taskList.filter((_, i) => i !== index));
+    Swal.fire({
+      icon: "success",
+      title: "Task completed",
+      text: `The task ${task.name} has been completed`,
+    });
+  };
+
   return (
     <div className="border border-2 rounded p-3 mb-3 bg-dark text-white">
       <h2>Tasks</h2>
@@ -25,19 +47,13 @@ export default function NewTasks() {
                 <div className="d-flex flex-row justify-content-between align-items-center">
                   <Button
                     bootstrapClass={"btn btn-danger m-1"}
-                    onClick={() => {
-                      setTaskDeleted([...taskDeleted, task]);
-                      setTaskList(taskList.filter((_, i) => i !== index));
-                    }}
+                    onClick={() => deleteTask(index, task)}
                   >
                     delete task
                   </Button>
                   <Button
                     bootstrapClass={"btn btn-success m-1"}
-                    onClick={() => {
-                      setTaskCompleted([...taskCompleted, task]);
-                      setTaskList(taskList.filter((_, i) => i !== index));
-                    }}
+                    onClick={() => completeTask(index, task)}
                   >
                     complete task
                   </Button>
