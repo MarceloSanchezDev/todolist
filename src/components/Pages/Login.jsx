@@ -36,7 +36,7 @@ export default function Login() {
                   id="username"
                   className="form-control"
                   onChange={(e) =>
-                    setUserLogin({ ...user, username: e.target.value })
+                    setUserLogin({ ...userLogin, username: e.target.value })
                   }
                 />
               </div>
@@ -49,7 +49,7 @@ export default function Login() {
                   id="password"
                   className="form-control"
                   onChange={(e) =>
-                    setUserLogin({ ...user, password: e.target.value })
+                    setUserLogin({ ...userLogin, password: e.target.value })
                   }
                 />
               </div>
