@@ -11,12 +11,12 @@ export default async function handler(req, res) {
             if (!userValid) {
                 throw new Error("Invalid data")
             }
-            const userLogin = await UserModel.login(userValid.data)
-            if (userLogin.length === 0) {
+            const user = await UserModel.login(userValid.data)
+            if (user.length === 0) {
                 throw new Error("Error al logear el usuario")
             }
             
-            res.status(200).json({ message: "Usuario logeado correctamente", userLogin });
+            res.status(200).json({ message: "Usuario logeado correctamente", user });
         } catch (error) {
             return res.status(400).json({ message: "Datos inválidos" , error:error.message});
         }

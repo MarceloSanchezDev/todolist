@@ -11,11 +11,11 @@ export default async function handler(req, res) {
         if (!userValid) {
             throw new Error("Invalid data")
         }
-        const userRegister = await UserModel.registerUser(userValid.data)
-        if (userRegister.length === 0) {
+        const user = await UserModel.registerUser(userValid.data)
+        if (user.length === 0) {
             throw new Error("Error al registrar el usuario")
         }
-        res.status(200).json({ message: "Usuario registrado correctamente", userRegister });
+        res.status(200).json({ message: "Usuario registrado correctamente", user });
     } catch (error) {
         return res.status(400).json({ message: "Datos inválidos" , error:error.message});
     }
