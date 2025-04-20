@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
+  console.log(user);
   const login = async (userData, url) => {
     try {
       const res = await fetch(url, {
@@ -23,11 +23,18 @@ export const AuthProvider = ({ children }) => {
           icon: "success",
           confirmButtonText: "OK",
         });
+        setUser({
+          token: res.token,
+          username: res.username,
+          nombre: res.nombre,
+          apellido: res.apellido,
+          email: res.email,
+          id: res.id,
+        });
       }
     } catch (error) {
       console.log(error);
     }
-    setUser(userData);
   };
 
   const logout = () => {
