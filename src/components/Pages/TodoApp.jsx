@@ -15,9 +15,14 @@ export default function TodoApp() {
           {!user ? (
             <Auth></Auth>
           ) : (
-            <Button onClick={logout} bootstrapClass={"btn btn-danger"}>
-              Logout
-            </Button>
+            <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center">
+              <h3 className="text-center text-white m-2">
+                Welcome {user.nombre} {user.apellido}
+              </h3>
+              <Button onClick={logout} bootstrapClass={"btn btn-danger"}>
+                Logout
+              </Button>
+            </div>
           )}
         </div>
 
