@@ -20,7 +20,7 @@ export default function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(Object.entries(newUser));
-    login(newUser, '/api/auth/register');
+    login(newUser, "/api/auth/register");
   };
   return (
     <>
@@ -44,10 +44,25 @@ export default function Register() {
                 />
               </div>
               <div className="col-sm-4  mb-3">
-                <label htmlFor="username" className="label-form p-2">
-                  Username :
+                <label htmlFor="name" className="label-form p-2">
+                  Name :
                 </label>
                 <input
+                  type="text"
+                  id="name"
+                  className="form-control"
+                  required
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, username: e.target.value })
+                  }
+                />
+              </div>
+              <div className="col-sm-4  mb-3">
+                <label htmlFor="lastname" className="label-form p-2">
+                  Lastname :
+                </label>
+                <input
+                  id="lastname"
                   type="text"
                   className="form-control"
                   required
@@ -57,10 +72,25 @@ export default function Register() {
                 />
               </div>
               <div className="col-sm-4  mb-3">
-                <label htmlFor="" className="label-form p-2">
+                <label htmlFor="username" className="label-form p-2">
+                  Username :
+                </label>
+                <input
+                  id="username"
+                  type="text"
+                  className="form-control"
+                  required
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, username: e.target.value })
+                  }
+                />
+              </div>
+              <div className="col-sm-4  mb-3">
+                <label htmlFor="password" className="label-form p-2">
                   Password :
                 </label>
                 <input
+                  id="password"
                   type="password"
                   className="form-control"
                   required
@@ -70,10 +100,11 @@ export default function Register() {
                 />
               </div>
               <div className="col-sm-4  mb-3">
-                <label htmlFor="" className="label-form p-2">
+                <label htmlFor="confirmPassword" className="label-form p-2">
                   Confirm Password :
                 </label>
                 <input
+                  id="confirmPassword"
                   type="password"
                   className="form-control"
                   required
