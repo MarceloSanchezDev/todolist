@@ -3,6 +3,7 @@ import Task from "./Task";
 import TaskForm from "./TaskForm";
 import Button from "../Buttom/Buttom";
 import Swal from "sweetalert2";
+import { useAuthContext } from "../../context/AuthContext";
 
 export default function NewTasks() {
   const {
@@ -13,6 +14,7 @@ export default function NewTasks() {
     taskDeleted,
     taskCompleted,
   } = useTaskContext();
+  const { user } = useAuthContext();
 
   const deleteTask = (index, task) => {
     setTaskDeleted([...taskDeleted, task]);
@@ -36,7 +38,7 @@ export default function NewTasks() {
 
   return (
     <div className="border border-2 rounded p-3 mb-3 bg-dark text-white">
-      <h2>Tasks</h2>
+      {user ? <h2>Tasks of {user.username}</h2> : <h2>Tasks</h2>}
       <div className="d-flex flex-column justify-content-between rounded align-items-center m-3">
         <TaskForm setTaskList={setTaskList} />
         {taskList.length > 0 ? (
