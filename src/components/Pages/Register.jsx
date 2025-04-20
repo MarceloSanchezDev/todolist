@@ -6,6 +6,8 @@ import Button from "../Buttom/Buttom";
 export default function Register() {
   const [newUser, setNewUser] = useState({
     email: null,
+    name: null,
+    lastname: null,
     username: null,
     password: null,
     confirmPassword: null,
@@ -53,7 +55,7 @@ export default function Register() {
                   className="form-control"
                   required
                   onChange={(e) =>
-                    setNewUser({ ...newUser, username: e.target.value })
+                    setNewUser({ ...newUser, name: e.target.value })
                   }
                 />
               </div>
@@ -67,7 +69,7 @@ export default function Register() {
                   className="form-control"
                   required
                   onChange={(e) =>
-                    setNewUser({ ...newUser, username: e.target.value })
+                    setNewUser({ ...newUser, lastname: e.target.value })
                   }
                 />
               </div>
