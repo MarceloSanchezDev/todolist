@@ -122,12 +122,12 @@ export class UserModel {
     static async login ({ input }) {
         // extraigo del input los siguientes datos
         const {
-          email,
+          username,
           password
         } = input
         try {
           // busco al usuario en a base de datos
-          const { rows } = await db.execute('SELECT *, id_user as id FROM user WHERE email = ?', [email])
+          const { rows } = await db.execute('SELECT *, id_user as id FROM user WHERE username = ?', [username])
           if (rows.length === 0) { throw new Error('User not found') }
           const validatedUser = rows[0]
           // comparo  la contraseña con la hasheada
