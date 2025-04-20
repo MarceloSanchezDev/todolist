@@ -23,7 +23,21 @@ export const AuthProvider = ({ children }) => {
     };
     fetchtest();
   }, [user]);
-  const login = (userData) => {
+  const login = async (userData) => {
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      }).then((res) => res.json());
+      if (res) {
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
+    }
     setUser(userData);
     Swal.fire({
       title: "Login",
