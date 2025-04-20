@@ -18,11 +18,11 @@ export default async function handler(req, res) {
             if (user.length === 0) {
                 throw new Error("Error al logear el usuario")
             }
-            const { email, id,} = userValid;
+            const { email, id, username,nombre, apellido} = userValid;
         const token = jwt.sign({ id, email }, SECRET_KEY, {
             expiresIn: '2 days'
         });
-            res.status(200).json({ message: "Usuario logeado correctamente", user,token });
+            res.status(200).json({ message: "Usuario logeado correctamente", email, id, username, nombre, apellido ,token });
         } catch (error) {
             return res.status(400).json({ message: "Datos inválidos" , error:error.message});
         }
