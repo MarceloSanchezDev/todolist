@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
         console.log(res);
         Swal.fire({
           title: `${res.message}`,
-          text: `Welcome ${res.user.nombre}!`,
+          text: `Welcome ${res.nombre} ${res.apellido}!`,
           icon: "success",
           confirmButtonText: "OK",
         });
