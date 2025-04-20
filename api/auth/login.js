@@ -18,7 +18,7 @@ export default async function handler(req, res) {
             if (user.length === 0) {
                 throw new Error("Error al logear el usuario")
             }
-            const { email, id, username,nombre, apellido} = userValid;
+            const { email, id, username,nombre, apellido} = user;
         const token = jwt.sign({ id, email }, SECRET_KEY, {
             expiresIn: '2 days'
         });
