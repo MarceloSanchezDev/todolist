@@ -119,12 +119,12 @@ export class UserModel {
          */
         return rows
       }
-    static async login ({ input }) {
+    static async login (user) {
         // extraigo del input los siguientes datos
         const {
           username,
           password
-        } = input
+        } = user
         try {
           // busco al usuario en a base de datos
           const { rows } = await db.execute('SELECT *, id_user as id FROM user WHERE username = ?', [username])
