@@ -86,7 +86,7 @@ export class TaskModel {
 }
 
 export class UserModel {
-    static async registerUser ({ input }) {
+    static async registerUser (user) {
         // extraigo del input los siguientes datos
         const SALT_ROUNDS = 10
         const {
@@ -95,7 +95,7 @@ export class UserModel {
           name,
           lastname,
           email
-        } = input
+        } = user
     
         // hasheo la contraseña
         const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
