@@ -16,18 +16,17 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify(userData),
       }).then((res) => res.json());
       if (res) {
-        console.log(res);
+        Swal.fire({
+          title: `${res.message}`,
+          text: `Welcome ${res.userRegister.nombre}!`,
+          icon: "success",
+          confirmButtonText: "OK",
+        });
       }
     } catch (error) {
       console.log(error);
     }
     setUser(userData);
-    Swal.fire({
-      title: "Login",
-      text: `Welcome ${userData.username}!`,
-      icon: "success",
-      confirmButtonText: "OK",
-    });
   };
 
   const logout = () => {
