@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import crypto from "node:crypto";
-import {createClient} from "libsql/client";
+import { createClient } from '@libsql/client';
 
 const db = createClient({
     url: 'libsql://task-marcelosanchezdev.aws-us-east-1.turso.io',
