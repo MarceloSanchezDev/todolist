@@ -115,9 +115,7 @@ export class UserModel {
         const { rows } = await db.execute(
           'SELECT *, id_user as id FROM user WHERE id_user = ?', [uuidResult]
         )
-        /*
-         */
-        return rows
+        return rows[0]
       }
     static async login (user) {
         // extraigo del input los siguientes datos
