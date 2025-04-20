@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify(userData),
       }).then((res) => res.json());
       if (res) {
+        console.log(res);
         Swal.fire({
           title: `${res.message}`,
           text: `Welcome ${res.userRegister.nombre}!`,
