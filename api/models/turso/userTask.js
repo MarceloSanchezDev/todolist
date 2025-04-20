@@ -7,10 +7,38 @@ const db = createClient({
     authToken: process.env.DBTOKEN,
 });
 
-await db.execute('CREATE TABLE IF NOT EXISTS  USER(id_user varchar(36) primary key,nombre varchar(255),apellido varchar(255),username TEXT unique,password varchar(255), email varchar(255)');
-await db.execute('CREATE TABLE IF NOT EXISTS  user_task(id_task varchar(36) primary key,fecha DATE,user_username varchar(255),nombre_task varchar(255),hora time, foreign key(user_username) references user(username))');
-await db.execute('CREATE TABLE IF NOT EXISTS  user_task_completed(id_task_completed varchar(36) primary key,fecha DATE,user_username varchar(255),nombre_task_completed varchar(255),hora time, foreign key(user_username) references user(username))');
-
+await db.execute(`
+    CREATE TABLE IF NOT EXISTS USER (
+      id_user varchar(36) primary key,
+      nombre varchar(255),
+      apellido varchar(255),
+      username TEXT unique,
+      password varchar(255),
+      email varchar(255)
+    );
+  `);
+  
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS user_task (
+      id_task varchar(36) primary key,
+      fecha DATE,
+      user_username varchar(255),
+      nombre_task varchar(255),
+      hora time,
+      foreign key(user_username) references user(username)
+    );
+  `);
+  
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS user_task_completed (
+      id_task_completed varchar(36) primary key,
+      fecha DATE,
+      user_username varchar(255),
+      nombre_task_completed varchar(255),
+      hora time,
+      foreign key(user_username) references user(username)
+    );
+  `);
 export class TaskModel {
     static async getAllTasks(username){
         try{
