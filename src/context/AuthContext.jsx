@@ -23,9 +23,9 @@ export const AuthProvider = ({ children }) => {
     };
     fetchtest();
   }, [user]);
-  const login = async (userData) => {
+  const login = async (userData, url) => {
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
