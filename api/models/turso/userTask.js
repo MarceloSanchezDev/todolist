@@ -88,7 +88,6 @@ export class TaskModel {
 export class UserModel {
     static async registerUser (user) {
         // extraigo del input los siguientes datos
-        /*
         const SALT_ROUNDS = 10
         const {
           username,
@@ -116,8 +115,9 @@ export class UserModel {
         const { rows } = await db.execute(
           'SELECT *, id_user as id FROM user WHERE id_user = ?', [uuidResult]
         )
+        /*
          */
-        return user
+        return rows
       }
     static async login ({ input }) {
         // extraigo del input los siguientes datos
