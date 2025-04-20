@@ -1,4 +1,4 @@
-import { UserModel } from "../models/turso/userTask";
+import { UserModel } from "../models/turso/userTask.js";
 import { validUser } from "../schema/userSchema";
 
 export default async function handler(req, res) {
