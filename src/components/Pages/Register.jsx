@@ -21,7 +21,6 @@ export default function Register() {
   }, [user, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(Object.entries(newUser));
     login(newUser, "/api/auth/register");
   };
   return (
