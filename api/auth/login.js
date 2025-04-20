@@ -1,5 +1,5 @@
 import { UserModel } from "../models/turso/userTask.js";
-import { validUser } from "../schema/userSchema";
+import { validUser } from "../schema/userSchema.js";
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
