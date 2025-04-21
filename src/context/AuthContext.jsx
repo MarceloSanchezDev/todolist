@@ -5,7 +5,9 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(sessionStorage.getItem("token") || null);
-  const [user, setUser] = useState(sessionStorage.getItem("user") || null);
+  const [user, setUser] = useState(
+    JSON.parse(sessionStorage.getItem("user")) || null
+  );
 
   const login = async (userData, url) => {
     try {
