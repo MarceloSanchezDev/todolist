@@ -5,7 +5,6 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  console.log(user);
   const login = async (userData, url) => {
     try {
       const res = await fetch(url, {
@@ -36,7 +35,6 @@ export const AuthProvider = ({ children }) => {
       console.log(error);
     }
   };
-
   const logout = () => {
     setUser(null);
     Swal.fire({

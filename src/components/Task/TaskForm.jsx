@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useTaskContext } from "../../context/TaskContext.jsx";
 import Button from "../Buttom/Buttom.jsx";
 import Swal from "sweetalert2";
 
-export default function TaskForm({ setTaskList }) {
+export default function TaskForm() {
   const [task, setTask] = useState({ name: "", completed: false });
+  const { setTaskList } = useTaskContext();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task.name.length > 4) {
