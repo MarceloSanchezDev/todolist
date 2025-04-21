@@ -83,6 +83,22 @@ export class TaskModel {
         }
         return rows[0]
     }
+    static async completeTask(id_task){
+        try{
+            const {rows} = await db.execute('SELECT * FROM user_task WHERE id_task = ?', [id_task]);
+            const {fecha, user_username, nombre_task, hora} = rows[0]
+            const id = crypto.randomUUID()
+            await db.execute('INSERT INTO user_task_completed (id_task_completed, fecha, user_username, nombre_task_completed, hora) VALUES (?, ?, ?, ?, ?)', [id, fecha, user_username, nombre_task, hora]);
+            await db.execute('DELETE FROM user_task WHERE id_task = ?', [id_task]);
+        }catch (error) {
+            console.error("Error al completar la tarea:", error);
+        }
+        const {rows} = await db.execute('SELECT * FROM user_task');
+        if (rows.length === 1) {
+            return false; // No hay tareas
+        }
+        return rows[0]
+    }
 }
 
 export class UserModel {
