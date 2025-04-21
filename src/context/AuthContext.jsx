@@ -16,24 +16,25 @@ export const AuthProvider = ({ children }) => {
         },
         body: JSON.stringify(userData),
       }).then((res) => res.json());
-      if (res) {
-        Swal.fire({
-          title: `${res.message}`,
-          text: `Welcome ${res.nombre} ${res.apellido}!`,
-          icon: "success",
-          confirmButtonText: "OK",
-        });
-        setUser({
-          username: res.username,
-          nombre: res.nombre,
-          apellido: res.apellido,
-          email: res.email,
-          id: res.id,
-        });
-        setToken(res.token);
-        sessionStorage.setItem("token", token);
-        sessionStorage.setItem("user", JSON.stringify(user));
+      if (!res.ok) {
+        throw new Error(res.message);
       }
+      Swal.fire({
+        title: `${res.message}`,
+        text: `Welcome ${res.nombre} ${res.apellido}!`,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      setUser({
+        username: res.username,
+        nombre: res.nombre,
+        apellido: res.apellido,
+        email: res.email,
+        id: res.id,
+      });
+      setToken(res.token);
+      sessionStorage.setItem("token", token);
+      sessionStorage.setItem("user", JSON.stringify(user));
     } catch (error) {
       Swal.fire({
         title: `Error :${error.message}`,
