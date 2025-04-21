@@ -5,14 +5,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(sessionStorage.getItem("token") || null);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedToken = sessionStorage.getItem("token");
-    const storedUser = sessionStorage.getItem("user");
-    if (storedUser) setUser(JSON.parse(storedUser));
-    if (storedToken) setToken(storedToken);
-  }, []);
+  const [user, setUser] = useState(sessionStorage.getItem("user") || null);
 
   const login = async (userData, url) => {
     try {
