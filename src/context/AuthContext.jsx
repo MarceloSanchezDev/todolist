@@ -15,10 +15,12 @@ export const AuthProvider = ({ children }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),
-      }).then((res) => res.json());
+      });
       if (!res.ok) {
         throw new Error(res.message);
       }
+      const resData = await res.json();
+      const { token, ...user } = resData;
       Swal.fire({
         title: `${res.message}`,
         text: `Welcome ${res.nombre} ${res.apellido}!`,
