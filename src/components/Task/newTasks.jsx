@@ -2,7 +2,6 @@ import { useTaskContext } from "../../context/TaskContext";
 import Task from "./Task";
 import TaskForm from "./TaskForm";
 import Button from "../Buttom/Buttom";
-
 import { useAuthContext } from "../../context/AuthContext";
 
 export default function NewTasks() {
