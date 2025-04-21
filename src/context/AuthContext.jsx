@@ -1,10 +1,19 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [token, setToken] = useState(sessionStorage.getItem("token") || null);
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedToken = sessionStorage.getItem("token");
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) setUser(JSON.parse(storedUser));
+    if (storedToken) setToken(storedToken);
+  }, []);
+
   const login = async (userData, url) => {
     try {
       const res = await fetch(url, {
@@ -15,7 +24,6 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify(userData),
       }).then((res) => res.json());
       if (res) {
-        console.log(res);
         Swal.fire({
           title: `${res.message}`,
           text: `Welcome ${res.nombre} ${res.apellido}!`,
@@ -23,16 +31,21 @@ export const AuthProvider = ({ children }) => {
           confirmButtonText: "OK",
         });
         setUser({
-          token: res.token,
           username: res.username,
           nombre: res.nombre,
           apellido: res.apellido,
           email: res.email,
           id: res.id,
         });
+        setToken(res.token);
       }
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: `Error :${error.message}`,
+        text: "Invalid credentials",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
   };
   const logout = () => {
@@ -46,7 +59,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, token }}>
       {children}
     </AuthContext.Provider>
   );
