@@ -38,6 +38,8 @@ export const AuthProvider = ({ children }) => {
           id: res.id,
         });
         setToken(res.token);
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("user", JSON.stringify(user));
       }
     } catch (error) {
       Swal.fire({
