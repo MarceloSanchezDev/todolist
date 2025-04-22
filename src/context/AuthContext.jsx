@@ -35,8 +35,8 @@ export const AuthProvider = ({ children }) => {
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("user", JSON.stringify(user));
       Swal.fire({
-        title: `${res.message}`,
-        text: `Welcome ${res.nombre} ${res.apellido}!`,
+        title: `${user.message}`,
+        text: `Welcome ${user.nombre} ${user.apellido}!`,
         icon: "success",
         confirmButtonText: "OK",
       });
