@@ -17,7 +17,6 @@ export default function Login() {
   }, [user, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(Object.entries(userLogin));
     login(userLogin, "/api/auth/login");
   };
   return (

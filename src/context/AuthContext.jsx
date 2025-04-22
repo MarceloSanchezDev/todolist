@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(
     JSON.parse(sessionStorage.getItem("user")) || null
   );
-  console.log(user, token);
   useEffect(() => {
     const storedToken = sessionStorage.getItem("token");
     const storedUser = sessionStorage.getItem("user");
