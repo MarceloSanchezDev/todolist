@@ -1,26 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, use, useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
-/*
+
 import { useFetch } from "../hooks/useFetch";
 import { useAuthContext } from "../../context/AuthContext";
- */
+
 const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
   const [taskList, setTaskList] = useState([]);
   const [taskCompleted, setTaskCompleted] = useState([]);
   const [taskDeleted, setTaskDeleted] = useState([]);
-  /*
   const { user } = useAuthContext();
-  const { data, loading, error } = useFetch("/api/tank/allTask", "POST", {
-    username: user.username,
-  });
-*/
+  const { data, loading, error } = useFetch("/api/task/allTasks", "POST", user);
+  useEffect(() => {
+    setTaskList(data);
+  }, [data]);
+  
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <h1>Error</h1>;
+
   const newTask = (task) => {
-    setTaskList((prevTasks) => [...prevTasks, task]);
     if (task.name.length > 4) {
       setTaskList((prevTasks) => [...prevTasks, task]);
-      setTask({ name: "", completed: false });
       Swal.fire({
         title: "Exito",
         text: "Tarea agregada correctamente",
