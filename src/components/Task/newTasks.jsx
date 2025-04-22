@@ -7,7 +7,6 @@ import { useAuthContext } from "../../context/AuthContext";
 export default function NewTasks() {
   const { taskList, deleteTask, completeTask } = useTaskContext();
   const { user } = useAuthContext();
-  console.log(user);
   return (
     <div className="border border-2 rounded p-3 mb-3 bg-dark text-white">
       {user ? <h2>Tasks of {user.username}</h2> : <h2>Tasks</h2>}
