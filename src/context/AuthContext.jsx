@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { useFetch } from "../hooks/useFetch";
+//import { useFetch } from "../hooks/useFetch";
 
 const AuthContext = createContext();
 
@@ -9,7 +9,12 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(
     JSON.parse(sessionStorage.getItem("user")) || null
   );
-
+  useEffect(() => {
+    const storedToken = sessionStorage.getItem("token");
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) setUser(JSON.parse(storedUser));
+    if (storedToken) setToken(storedToken);
+  }, []);
   const login = async (userData, url) => {
     try {
       const res = await fetch(url, {
