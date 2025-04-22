@@ -1,12 +1,41 @@
 import { createContext, useContext, useState } from "react";
 import Swal from "sweetalert2";
-
+/*
+import { useFetch } from "../hooks/useFetch";
+import { useAuthContext } from "../../context/AuthContext";
+ */
 const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
   const [taskList, setTaskList] = useState([]);
   const [taskCompleted, setTaskCompleted] = useState([]);
   const [taskDeleted, setTaskDeleted] = useState([]);
+  /*
+  const { user } = useAuthContext();
+  const { data, loading, error } = useFetch("/api/tank/allTask", "POST", {
+    username: user.username,
+  });
+*/
+  const newTask = (task) => {
+    setTaskList((prevTasks) => [...prevTasks, task]);
+    if (task.name.length > 4) {
+      setTaskList((prevTasks) => [...prevTasks, task]);
+      setTask({ name: "", completed: false });
+      Swal.fire({
+        title: "Exito",
+        text: "Tarea agregada correctamente",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "La tarea no puede ser menor a 4 caracteres",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
+    }
+  };
   const deleteTask = (index, task) => {
     setTaskDeleted([...taskDeleted, task]);
     setTaskList(taskList.filter((_, i) => i !== index));
@@ -28,10 +57,10 @@ export const TaskProvider = ({ children }) => {
   return (
     <TaskContext.Provider
       value={{
-        setTaskList,
         taskList,
         taskCompleted,
         taskDeleted,
+        newTask,
         completeTask,
         deleteTask,
       }}

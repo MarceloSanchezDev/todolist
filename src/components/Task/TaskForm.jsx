@@ -1,31 +1,14 @@
 import { useState } from "react";
 import { useTaskContext } from "../../context/TaskContext.jsx";
 import Button from "../Buttom/Buttom.jsx";
-import Swal from "sweetalert2";
 
 export default function TaskForm() {
   const [task, setTask] = useState({ name: "", completed: false });
-  const { setTaskList } = useTaskContext();
+  const { newTask } = useTaskContext();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (task.name.length > 4) {
-      setTaskList((prevTasks) => [...prevTasks, task]);
-      setTask({ name: "", completed: false });
-      Swal.fire({
-        title: "Exito",
-        text: "Tarea agregada correctamente",
-        icon: "success",
-        confirmButtonText: "Aceptar",
-      });
-    } else {
-      Swal.fire({
-        title: "Error",
-        text: "La tarea no puede ser menor a 4 caracteres",
-        icon: "error",
-        confirmButtonText: "Aceptar",
-      });
-      console.log("la terea no puede ser menor a 4 caracteres");
-    }
+    newTask(task);
+    setTask({ name: "", completed: false });
   };
   return (
     <form className="row mb-3 w-100 " onSubmit={handleSubmit}>
