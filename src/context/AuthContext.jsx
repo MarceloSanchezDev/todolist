@@ -51,6 +51,9 @@ export const AuthProvider = ({ children }) => {
   };
   const logout = () => {
     setUser(null);
+    sessionStorage.setItem("user", null);
+    setToken(null);
+    sessionStorage.setItem("token", null);
     Swal.fire({
       title: "Logout",
       text: "You have logged out successfully.",
