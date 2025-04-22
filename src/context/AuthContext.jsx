@@ -29,12 +29,7 @@ export const AuthProvider = ({ children }) => {
       }
       const resData = await res.json();
       const { token, ...user } = resData;
-      Swal.fire({
-        title: `${res.message}`,
-        text: `Welcome ${res.nombre} ${res.apellido}!`,
-        icon: "success",
-        confirmButtonText: "OK",
-      });
+      setToken(res.token);
       setUser({
         username: res.username,
         nombre: res.nombre,
@@ -42,9 +37,14 @@ export const AuthProvider = ({ children }) => {
         email: res.email,
         id: res.id,
       });
-      setToken(res.token);
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("user", JSON.stringify(user));
+      Swal.fire({
+        title: `${res.message}`,
+        text: `Welcome ${res.nombre} ${res.apellido}!`,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
     } catch (error) {
       Swal.fire({
         title: `Error :${error.message}`,
