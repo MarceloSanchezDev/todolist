@@ -11,14 +11,12 @@ export const TaskProvider = ({ children }) => {
   const [taskCompleted, setTaskCompleted] = useState([]);
   const [taskDeleted, setTaskDeleted] = useState([]);
   const { user } = useAuthContext();
-  const { data, loading, error } = useFetch("/api/task/allTasks", "POST", user);
+  const { data } = useFetch("/api/task/allTasks", "POST", user);
   useEffect(() => {
     setTaskList(data);
   }, [data]);
-  
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Error</h1>;
 
+  console.log(taskList);
   const newTask = (task) => {
     if (task.name.length > 4) {
       setTaskList((prevTasks) => [...prevTasks, task]);
