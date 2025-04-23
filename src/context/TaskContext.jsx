@@ -12,7 +12,7 @@ export const TaskProvider = ({ children }) => {
   const [taskDeleted, setTaskDeleted] = useState([]);
   const { user } = useAuthContext();
   const { data } = useFetch("/api/task/allTasks", "POST", user);
-  console.log(user);
+
   useEffect(() => {
     setTaskList(data);
   }, []);
@@ -20,6 +20,7 @@ export const TaskProvider = ({ children }) => {
   const newTask = async (task) => {
     if (task.name.length > 4) {
       try {
+        console.log(user);
         const newTaskFetch = await fetch("/api/task/addTask", {
           method: "POST",
           headers: {
