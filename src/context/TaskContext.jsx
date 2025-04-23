@@ -14,7 +14,7 @@ export const TaskProvider = ({ children }) => {
   const { data } = useFetch("/api/task/allTasks", "POST", user);
   useEffect(() => {
     setTaskList(data);
-  }, [data]);
+  }, []);
 
   const newTask = async (task) => {
     if (task.name.length > 4) {
