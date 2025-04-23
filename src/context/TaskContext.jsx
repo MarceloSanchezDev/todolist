@@ -16,15 +16,25 @@ export const TaskProvider = ({ children }) => {
     setTaskList(data);
   }, [data]);
 
-  const newTask = (task) => {
+  const newTask = async (task) => {
     if (task.name.length > 4) {
       try {
-        fetch("/api/task/addTask", {
+        const newTaskFetch = await fetch("/api/task/addTask", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(task, user.username),
+        });
+        const newTask = await newTaskFetch.json();
+        if (!newTask) {
+          throw new Error("Error al crear la tarea");
+        }
+        Swal.fire({
+          title: "Exito",
+          text: `"Tarea agregada correctamente", ${task.name}"`,
+          icon: "success",
+          confirmButtonText: "Aceptar",
         });
       } catch (error) {
         Swal.fire({
