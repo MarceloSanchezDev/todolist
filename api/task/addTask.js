@@ -7,7 +7,8 @@ export default async function handler(req, res) {
     const { body } = req;
     try {
         
-        const { username, task } = body;
+        const { user, task } = body;
+        const {username} = user
         const newTask = await UserModel.createTask(username,task);
         const tasks = await UserModel.getAllTasks(username);
         
