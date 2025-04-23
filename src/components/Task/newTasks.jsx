@@ -12,7 +12,7 @@ export default function NewTasks() {
       {user ? <h2>Tasks of {user.username}</h2> : <h2>Tasks</h2>}
       <div className="d-flex flex-column justify-content-between rounded align-items-center m-3">
         <TaskForm />
-        {taskList.length > 0 ? (
+        {taskList && taskList.length > 0 ? (
           taskList.map((task, index) => {
             return (
               <Task key={index}>
