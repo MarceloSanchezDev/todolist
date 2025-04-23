@@ -61,8 +61,8 @@ export class TaskModel {
             const  fecha = new Date().toISOString().split('T')[0]
             const  hora = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
             const id = crypto.randomUUID()
-            const {nombre_task} = task
-            await db.execute('INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)', [id, fecha, username, nombre_task, hora]);
+            const {name} = task
+            await db.execute('INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)', [id, fecha, username, name, hora]);
             return true
         }catch (error) {
             console.error("Error al crear la tarea:", error);
