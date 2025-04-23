@@ -1,8 +1,8 @@
-import { useTaskContext } from "../../context/TaskContext";
-import Task from "./Task";
-import TaskForm from "./TaskForm";
-import Button from "../Buttom/Buttom";
-import { useAuthContext } from "../../context/AuthContext";
+import { useTaskContext } from "../../context/TaskContext.jsx";
+import Task from "./Task.jsx";
+import TaskForm from "./TaskForm.jsx";
+import Button from "../Buttom/Buttom.jsx";
+import { useAuthContext } from "../../context/AuthContext.jsx";
 
 export default function NewTasks() {
   const { taskList, deleteTask, completeTask } = useTaskContext();
@@ -43,4 +43,3 @@ export default function NewTasks() {
     </div>
   );
 }
-z
