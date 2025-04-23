@@ -20,7 +20,6 @@ export const TaskProvider = ({ children }) => {
   const newTask = async (task) => {
     if (task.name.length > 4) {
       try {
-        console.log(user);
         const newTaskFetch = await fetch("/api/task/addTask", {
           method: "POST",
           headers: {
