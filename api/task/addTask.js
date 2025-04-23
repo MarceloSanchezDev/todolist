@@ -6,8 +6,8 @@ export default async function handler(req, res) {
     }
     const { body } = req;
     try {
-        const { username, task } = body;
         /*
+        const { username, task } = body;
         const newTask = await UserModel.createTask(username,task);
         if(!newTask) {
             throw new Error("Error al crear la tarea")
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         const tasks = await UserModel.getAllTasks(username);
         
         */
-       res.status(200).json({ username, task });
+       res.status(200).json(body);
     } catch (error) {
         return res.status(400).json({ message: "Error al crear una nueva tarea" , error});
     }
