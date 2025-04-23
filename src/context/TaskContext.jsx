@@ -24,7 +24,7 @@ export const TaskProvider = ({ children }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(task, user.username),
+          body: JSON.stringify(task, user),
         });
         const newTask = await newTaskFetch.json();
         console.log(newTask);
