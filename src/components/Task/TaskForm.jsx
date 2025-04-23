@@ -3,12 +3,12 @@ import { useTaskContext } from "../../context/TaskContext.jsx";
 import Button from "../Buttom/Buttom.jsx";
 
 export default function TaskForm() {
-  const [task, setTask] = useState({ name: "", completed: false });
+  const [task, setTask] = useState({ name: "" });
   const { newTask } = useTaskContext();
   const handleSubmit = (e) => {
     e.preventDefault();
     newTask(task);
-    setTask({ name: "", completed: false });
+    setTask({ name: "" });
   };
   return (
     <form className="row mb-3 w-100 " onSubmit={handleSubmit}>
