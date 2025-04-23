@@ -27,6 +27,7 @@ export const TaskProvider = ({ children }) => {
           body: JSON.stringify(task, user.username),
         });
         const newTask = await newTaskFetch.json();
+        console.log(newTask);
         if (!newTask) {
           throw new Error("Error al crear la tarea");
         }
