@@ -6,7 +6,8 @@ export default async function handler(req, res) {
     }
     const { body } = req;
     try {
-        const { username } = body;
+        const { user } = body;
+        const { username } = user;
         const tasks = await UserModel.getAllTasks(username);
         const tasksCompleted = await UserModel.getAllTasksCompleted(username);
         res.status(200).json({ tasks, tasksCompleted });
