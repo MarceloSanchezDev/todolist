@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 import { useFetch } from "../hooks/useFetch.jsx";
-import { useAuthContext } from "../../context/AuthContext.jsx";
+import { useAuthContext } from "./AuthContext.jsx";
 
 const TaskContext = createContext();
 
