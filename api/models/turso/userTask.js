@@ -22,9 +22,11 @@ await db.execute(`
     CREATE TABLE IF NOT EXISTS user_task (
       id_task varchar(36) primary key,
       fecha DATE,
+      fecha_completada DATE,
       user_username varchar(255),
       nombre_task varchar(255),
       hora time,
+      hora_completada time,
       foreign key(user_username) references user(username)
     );
   `);
@@ -100,10 +102,16 @@ export class TaskModel {
     }
     static async completeTask(id_task){
         try{
+          const fechaCompletada = new Date().toISOString().split('T')[0];
+          const horaCompletada = new Date().toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          });
             const {rows} = await db.execute('SELECT * FROM user_task WHERE id_task = ?', [id_task]);
             const {fecha, user_username, nombre_task, hora} = rows[0]
             const id = crypto.randomUUID()
-            await db.execute('INSERT INTO user_task_completed (id_task_completed, fecha, user_username, nombre_task_completed, hora) VALUES (?, ?, ?, ?, ?)', [id, fecha, user_username, nombre_task, hora]);
+            await db.execute('INSERT INTO user_task_completed (id_task_completed, fecha, user_username, nombre_task_completed, hora, hora_completada,fecha_completada) VALUES (?, ?, ?, ?, ?,?,?)', [id, fecha, user_username, nombre_task, hora,horaCompletada, fechaCompletada]);
             await db.execute('DELETE FROM user_task WHERE id_task = ?', [id_task]);
         }catch (error) {
             console.error("Error al completar la tarea:", error);
