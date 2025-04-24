@@ -6,7 +6,8 @@ export default async function handler(req, res) {
     }
     const { body } = req;
     try {
-        const { username, task } = body;
+        const { user, task } = body;
+        const {username} =  user;
         const newTaskCompleted = await TaskModel.completeTask(task.id_task);
         if(!newTaskCompleted) {
             throw new Error("Error al crear la tarea")
