@@ -84,7 +84,7 @@ export const TaskProvider = ({ children }) => {
   };
   const deleteTask = async (task) => {
     if (!user) {
-      setTaskList(taskList.filter((t) => t._id !== task._id));
+      setTaskList(taskList.filter((t) => t.id_task !== task.id_task));
       setTaskDeleted([...taskDeleted, task]);
       return;
     }
@@ -115,7 +115,7 @@ export const TaskProvider = ({ children }) => {
   };
   const completeTask = async (task) => {
     if (!user) {
-      setTaskList(taskList.filter((t) => t._id !== task._id));
+      setTaskList(taskList.filter((t) => t.id_task !== task.id_task));
       setTaskCompleted([...taskCompleted, task]);
       return;
     }
