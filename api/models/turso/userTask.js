@@ -64,10 +64,20 @@ export class TaskModel {
             const  hora = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
             const id = crypto.randomUUID()
             const {name} = task
+            /*
             await db.execute('INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)', [id, fecha, username, name, hora]);
             const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
             return rows[0]
-        }catch (error) {
+            */
+           const newTask = {
+            id_task: id,
+            fecha: fecha,
+            user_username: username,
+            nombre_task: name,
+            hora: hora
+           }
+           return newTask
+          }catch (error) {
           console.error("Error al crear la tareas:", error);
           return error
         }
