@@ -2,17 +2,20 @@ import { UserModel } from "../models/turso/userTask.js";
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
-        return res.status(405).json({ error: "Método no permitido" });
+      return res.status(405).json({ error: "Método no permitido" });
     }
-    const { body } = req;
+  
+    const { user, task } = req.body;
+  
+    if (!user?.username || !task?.name) {
+      return res.status(400).json({ error: "Faltan datos obligatorios" });
+    }
+  
     try {
-        const { user, task } = body;
-        const {username} = user
-        const newTask = await UserModel.createTask({username,task});
-        res.status(200).json(newTask);
-    }catch (error) {
-        return error
+      const newTask = await UserModel.createTask(user.username, task);
+      return res.status(200).json(newTask);
+    } catch (error) {
+      console.error("Error en addTask:", error);
+      return res.status(500).json({ error: "Error interno del servidor" });
     }
-        
-     
-}
+  }

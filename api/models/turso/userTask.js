@@ -59,20 +59,34 @@ export class TaskModel {
             return error
         }
     }
-    static async createTask(input){
-      /*
-        const {username, task} = input
-        const  fecha = new Date().toISOString().split('T')[0]
-        const  hora = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
-        const id = crypto.randomUUID()
-        const {name} = task
-      await db.execute('INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)', [id, fecha, username, name, hora]);
-            const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
-            return rows[0]
-            */
-           return input
-          
+    static async createTask(username, task) {
+      try {
+        const fecha = new Date().toISOString().split('T')[0];
+        const hora = new Date().toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        });
+        const id = crypto.randomUUID();
+        const { name } = task;
+    
+        await db.execute(
+          'INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)',
+          [id, fecha, username, name, hora]
+        );
+    
+        const { rows } = await db.execute(
+          'SELECT * FROM user_task WHERE user_username = ?',
+          [username]
+        );
+    
+        return rows;
+      } catch (error) {
+        console.error("Error al crear la tarea:", error);
+        throw new Error("No se pudo crear la tarea");
+      }
     }
+    
     static async deleteTask(id_task){
         try{
             await db.execute('DELETE FROM user_task WHERE id_task = ?', [id_task]);
