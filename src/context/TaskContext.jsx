@@ -11,12 +11,6 @@ export const TaskProvider = ({ children }) => {
   const [taskCompleted, setTaskCompleted] = useState([]);
   const [taskDeleted, setTaskDeleted] = useState([]);
   const { user } = useAuthContext();
-  const { data, error } = useFetch("/api/task/allTask", "POST", { user });
-  console.log(taskCompleted, taskDeleted, taskList);
-  console.log(data, error );
-  useEffect(() => {
-    setTaskList(data);
-  }, []);
 
   const newTask = async (task) => {
     if (task.name.length > 4) {
@@ -29,16 +23,13 @@ export const TaskProvider = ({ children }) => {
           body: JSON.stringify({ task, user }),
         });
         const newTask = await newTaskFetch.json();
-        console.log(newTask);
-        if (!newTask) {
-          throw new Error("Error al crear la tarea");
-        }
         Swal.fire({
           title: "Exito",
           text: `"Tarea agregada correctamente", ${task.name}"`,
           icon: "success",
           confirmButtonText: "Aceptar",
         });
+        console.log(newTask);
       } catch (error) {
         Swal.fire({
           title: "Error",
@@ -46,13 +37,8 @@ export const TaskProvider = ({ children }) => {
           icon: "error",
           confirmButtonText: "Aceptar",
         });
+        console.log(error);
       }
-      Swal.fire({
-        title: "Exito",
-        text: "Tarea agregada correctamente",
-        icon: "success",
-        confirmButtonText: "Aceptar",
-      });
     } else {
       Swal.fire({
         title: "Error",
