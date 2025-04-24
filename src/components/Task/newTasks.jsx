@@ -16,7 +16,15 @@ export default function NewTasks() {
           taskList.map((task, index) => {
             return (
               <Task key={index}>
-                <h3 className="text-primary">{task.name}</h3>
+                <h3 className="text-primary">{task.nombre_task}</h3>
+                <div>
+                  <p className="text-muted ">
+                    <i>Created on: {task.fecha}</i>
+                  </p>
+                  <p className="text-muted ">
+                    <i>Created at: {task.hora}</i>
+                  </p>
+                </div>
                 <div className="d-flex flex-row justify-content-between align-items-center">
                   <Button
                     bootstrapClass={"btn btn-danger m-1"}
