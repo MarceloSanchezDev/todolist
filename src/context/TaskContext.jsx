@@ -93,8 +93,8 @@ export const TaskProvider = ({ children }) => {
         icon: "success",
         confirmButtonText: "Aceptar",
       });
-      console.log(allTasks);
-      setTaskCompleted(allTasks.tasks);
+      setTaskList(allTasks.tasks);
+      setTaskCompleted(allTasks.tasksCompleted);
     } catch (error) {
       console.error("Error completing task:", error);
       Swal.fire({
