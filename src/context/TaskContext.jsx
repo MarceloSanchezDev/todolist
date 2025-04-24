@@ -32,11 +32,11 @@ export const TaskProvider = ({ children }) => {
       } catch (error) {
         Swal.fire({
           title: "Error",
-          text: `Error al agregar la tarea ${task.name}, ${error}`,
+          text: `Error al agregar la tarea ${task.name}, ${JSON.parse(error)}`,
           icon: "error",
           confirmButtonText: "Aceptar",
         });
-        console.log(error);
+        console.log(JSON.parse(error));
       }
     } else {
       Swal.fire({
