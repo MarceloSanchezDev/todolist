@@ -8,9 +8,9 @@ export default function TasksCompleted() {
       <h2 className="text-success">Tasks Completed</h2>
       <div className="d-flex flex-column justify-content-between rounded align-items-center m-3">
         {taskCompleted && taskCompleted.length > 0 ? (
-          taskCompleted.map((task, index) => {
+          taskCompleted.map((task) => {
             return (
-              <Task key={index}>
+              <Task key={task.id_task_completed}>
                 <h3 className="text-primary">{task.nombre_task_completed}</h3>
                 <div>
                   <p className="text-warning ">
