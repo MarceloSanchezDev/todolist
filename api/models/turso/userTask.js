@@ -117,11 +117,6 @@ export class TaskModel {
             console.error("Error al completar la tarea:", error);
             return error
         }
-        const {rows} = await db.execute('SELECT * FROM user_task');
-        if (rows.length === 1) {
-            return false; // No hay tareas
-        }
-        return rows[0]
     }
 }
 
