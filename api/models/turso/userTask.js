@@ -22,11 +22,9 @@ await db.execute(`
     CREATE TABLE IF NOT EXISTS user_task (
       id_task varchar(36) primary key,
       fecha DATE,
-      fecha_completada DATE,
       user_username varchar(255),
       nombre_task varchar(255),
       hora time,
-      hora_completada time,
       foreign key(user_username) references user(username)
     );
   `);
@@ -38,6 +36,8 @@ await db.execute(`
       user_username varchar(255),
       nombre_task_completed varchar(255),
       hora time,
+      hora_completada time,
+      fecha_completada DATE,
       foreign key(user_username) references user(username)
     );
   `);
