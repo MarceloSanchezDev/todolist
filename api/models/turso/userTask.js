@@ -113,6 +113,7 @@ export class TaskModel {
             const id = crypto.randomUUID()
             await db.execute('INSERT INTO user_task_completed (id_task_completed, fecha, user_username, nombre_task_completed, hora, hora_completada,fecha_completada) VALUES (?, ?, ?, ?, ?,?,?)', [id, fecha, user_username, nombre_task, hora,horaCompletada, fechaCompletada]);
             await db.execute('DELETE FROM user_task WHERE id_task = ?', [id_task]);
+            return true
         }catch (error) {
             console.error("Error al completar la tarea:", error);
             return error
