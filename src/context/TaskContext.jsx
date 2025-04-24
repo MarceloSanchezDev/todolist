@@ -104,10 +104,6 @@ export const TaskProvider = ({ children }) => {
         text: `Error completing task ${task.name}`,
       });
     }
-    /*
-    setTaskCompleted([...taskCompleted, task]);
-    setTaskList(taskList.filter((_, i) => i !== index));
-     */
     Swal.fire({
       icon: "success",
       title: "Task completed",
