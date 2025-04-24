@@ -10,7 +10,6 @@ export const TaskProvider = ({ children }) => {
   const [taskCompleted, setTaskCompleted] = useState([]);
   const [taskDeleted, setTaskDeleted] = useState([]);
   const { user } = useAuthContext();
-  console.log(taskList);
   useEffect(() => {
     if (!user) return;
     const getAllTasks = async () => {
