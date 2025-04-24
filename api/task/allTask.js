@@ -5,7 +5,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ message: "Method Not Allowed" });
       }
     const { body } = req;
-    try {
+    
 
         const { user } = body;
         const { username } = user;
@@ -13,7 +13,5 @@ export default async function handler(req, res) {
         const tasksCompleted = await UserModel.getAllTasksCompleted(username);
 
         res.status(200).json({ tasks, tasksCompleted });
-    } catch (error) {
-        return res.status(400).json({error});
-    }
+   
 }
