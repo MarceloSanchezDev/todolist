@@ -91,14 +91,10 @@ export class TaskModel {
     static async deleteTask(id_task){
         try{
             await db.execute('DELETE FROM user_task WHERE id_task = ?', [id_task]);
+            return true
         }catch (error) {
             console.error("Error al eliminar la tarea:", error);
         }
-        const {rows} = await db.execute('SELECT * FROM user_task');
-        if (rows.length === 1) {
-            return false; // No hay tareas
-        }
-        return rows[0]
     }
     static async completeTask(id_task){
         try{

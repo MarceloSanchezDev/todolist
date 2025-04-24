@@ -1,4 +1,4 @@
-import { UserModel } from "../models/turso/userTask.js";
+import { TaskModel } from "../models/turso/userTask.js";
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
@@ -7,11 +7,11 @@ export default async function handler(req, res) {
     const { body } = req;
     try {
         const { username, task } = body;
-        const taskDeleted = await UserModel.deleteTask(username,task);
-        if(taskDeleted) {
-            throw new Error("Error al crear la tarea")
+        const taskDeleted = await TaskModel.deleteTask(task);
+        if(!taskDeleted) {
+            throw new Error("Error al borrar la tarea")
         }
-        const tasks = await UserModel.getAllTasks(username);
+        const tasks = await TaskModel.getAllTasks(username);
         res.status(200).json({ message: "Tarea eliminada correctamente", tasks });
     } catch (error) {
         return res.status(400).json({ message: "Error al eliminar tarea" , error});

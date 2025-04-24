@@ -67,6 +67,24 @@ export const TaskProvider = ({ children }) => {
     }
   };
   const deleteTask = async (task) => {
+    try {
+      const deleteTaskFetch = await fetch("/api/task/deleteTask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ task, user }),
+      });
+      const allTasks = await deleteTaskFetch.json();
+      setTaskList(allTasks.tasks);
+    } catch (error) {
+      console.error("Error deleting task:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: `Error deleting task ${task.nombre_task}`,
+      });
+    }
     setTaskDeleted([...taskDeleted, task]);
     Swal.fire({
       icon: "success",
