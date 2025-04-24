@@ -18,11 +18,6 @@ export const useFetch = (url, method, objeto) => {
             body: JSON.stringify(objeto),
             signal: controller.signal, // ✅ Agregado correctamente
           });
-
-          if (!response.ok) {
-            throw new Error("Error al obtener datos");
-          }
-
           const json = await response.json();
           setData(json);
         } catch (error) {
