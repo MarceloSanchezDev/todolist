@@ -63,11 +63,9 @@ export class TaskModel {
             const id = crypto.randomUUID()
             const {name} = task
             await db.execute('INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)', [id, fecha, username, name, hora]);
-            return true
         }catch (error) {
             console.error("Error al crear la tarea:", error);
         }
-
         const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
         return rows[0]
     }
