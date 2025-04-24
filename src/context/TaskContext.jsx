@@ -10,6 +10,7 @@ export const TaskProvider = ({ children }) => {
   const [taskCompleted, setTaskCompleted] = useState([]);
   const [taskDeleted, setTaskDeleted] = useState([]);
   const { user } = useAuthContext();
+  console.log(taskList);
   useEffect(() => {
     if (!user) return;
     const getAllTasks = async () => {
@@ -84,8 +85,8 @@ export const TaskProvider = ({ children }) => {
   };
   const deleteTask = async (task) => {
     if (!user) {
-      setTaskList(taskList.filter((t) => t.id_task !== task.id_task));
       setTaskDeleted([...taskDeleted, task]);
+      setTaskList(taskList.filter((t) => t.id_task !== task.id_task));
       return;
     }
     try {
@@ -115,8 +116,8 @@ export const TaskProvider = ({ children }) => {
   };
   const completeTask = async (task) => {
     if (!user) {
-      setTaskList(taskList.filter((t) => t.id_task !== task.id_task));
       setTaskCompleted([...taskCompleted, task]);
+      setTaskList(taskList.filter((t) => t.id_task !== task.id_task));
       return;
     }
     try {
