@@ -68,6 +68,7 @@ export const TaskProvider = ({ children }) => {
   };
   const deleteTask = async (task) => {
     setTaskDeleted([...taskDeleted, task]);
+    console.log(task);
     Swal.fire({
       icon: "success",
       title: "Task deleted",
