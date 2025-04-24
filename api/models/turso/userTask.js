@@ -61,19 +61,13 @@ export class TaskModel {
     }
     static async createTask(username, task) {
       try {
-        const fecha = new Date().toISOString().split('T')[0];
-        const hora = new Date().toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false
-        });
         const id = crypto.randomUUID();
         const { name } = task;
     
         await db.execute(
-          'INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)',
-          [id, fecha, username, name, hora]
-        );
+          'INSERT INTO user_task (id_task, user_username, nombre_task) VALUES ( ?, ?, ?)',
+          [id, username, name]
+        )
     
         const { rows } = await db.execute(
           'SELECT * FROM user_task WHERE user_username = ?',
