@@ -40,8 +40,8 @@ export const TaskProvider = ({ children }) => {
           hour12: false,
         });
         const newTask = {
-          _id: Math.floor(Math.random() * 1000),
-          name: task.name,
+          id_task: Math.floor(Math.random() * 1000),
+          nombre_task: task.name,
           fecha,
           hora,
         };
