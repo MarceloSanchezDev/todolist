@@ -116,7 +116,21 @@ export const TaskProvider = ({ children }) => {
   };
   const completeTask = async (task) => {
     if (!user) {
-      setTaskCompleted([...taskCompleted, task]);
+      const fecha_completada = new Date().toISOString().split("T")[0];
+      const hora_completada = new Date().toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+      const newTaskComplete = {
+        id_task: task.id_task,
+        nombre_task_completed: task.nombre_task,
+        fecha: task.fecha,
+        hora: task.hora,
+        fecha_completada,
+        hora_completada,
+      };
+      setTaskCompleted([...taskCompleted, newTaskComplete]);
       setTaskList(taskList.filter((t) => t.id_task !== task.id_task));
       return;
     }
