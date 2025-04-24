@@ -12,8 +12,9 @@ export default async function handler(req, res) {
         if(!newTaskCompleted) {
             throw new Error("Error al crear la tarea")
         }
-        const tasks = await TaskModel.getAllTasksCompleted(username);
-        res.status(200).json({ tasks });
+        const tasksCompleted = await TaskModel.getAllTasksCompleted(username);
+        const tasks = await TaskModel.getAllTasks(username);
+        res.status(200).json({ tasks ,tasksCompleted });
     } catch (error) {
         return res.status(400).json({ message: "Error al completar una nueva tarea" , error});
     }
