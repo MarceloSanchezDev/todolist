@@ -8,10 +8,10 @@ export default function TasksDeleted() {
       <h2 className="text-danger">Tasks Deleted</h2>
       <div className="d-flex flex-column justify-content-between rounded align-items-center m-3">
         {taskDeleted.length > 0 ? (
-          taskDeleted.map((task, index) => {
+          taskDeleted.map((task) => {
             return (
-              <Task key={index}>
-                <h3 className="text-primary">{task.name}</h3>
+              <Task key={task.id_task}>
+                <h3 className="text-primary">{task.task_name}</h3>
                 <p className="text-danger ">
                   <i>Deleted</i>
                 </p>
