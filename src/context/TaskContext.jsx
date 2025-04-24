@@ -32,6 +32,22 @@ export const TaskProvider = ({ children }) => {
   }, [user]);
   const newTask = async (task) => {
     if (task.name.length > 4) {
+      if (!user) {
+        const fecha = new Date().toISOString().split("T")[0];
+        const hora = new Date().toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        });
+        const newTask = {
+          _id: Math.floor(Math.random() * 1000),
+          name: task.name,
+          fecha,
+          hora,
+        };
+        setTaskList([...taskList, newTask]);
+        return;
+      }
       try {
         const newTaskFetch = await fetch("/api/task/addTask", {
           method: "POST",
@@ -67,6 +83,11 @@ export const TaskProvider = ({ children }) => {
     }
   };
   const deleteTask = async (task) => {
+    if (!user) {
+      setTaskList(taskList.filter((t) => t._id !== task._id));
+      setTaskDeleted([...taskDeleted, task]);
+      return;
+    }
     try {
       const deleteTaskFetch = await fetch("/api/task/deleteTask", {
         method: "POST",
@@ -77,6 +98,11 @@ export const TaskProvider = ({ children }) => {
       });
       const allTasks = await deleteTaskFetch.json();
       setTaskList(allTasks.tasks);
+      Swal.fire({
+        icon: "success",
+        title: "Task deleted",
+        text: `The task ${task.nombre_task} has been deleted`,
+      });
     } catch (error) {
       console.error("Error deleting task:", error);
       Swal.fire({
@@ -86,13 +112,13 @@ export const TaskProvider = ({ children }) => {
       });
     }
     setTaskDeleted([...taskDeleted, task]);
-    Swal.fire({
-      icon: "success",
-      title: "Task deleted",
-      text: `The task ${task.nombre_task} has been deleted`,
-    });
   };
   const completeTask = async (task) => {
+    if (!user) {
+      setTaskList(taskList.filter((t) => t._id !== task._id));
+      setTaskCompleted([...taskCompleted, task]);
+      return;
+    }
     try {
       const completeTaskFetch = await fetch("/api/task/completeTask", {
         method: "POST",
