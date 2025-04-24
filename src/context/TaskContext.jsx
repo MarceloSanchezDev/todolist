@@ -40,14 +40,15 @@ export const TaskProvider = ({ children }) => {
           },
           body: JSON.stringify({ task, user }),
         });
-        const newTask = await newTaskFetch.json();
+        const allTasks = await newTaskFetch.json();
         Swal.fire({
           title: "Exito",
-          text: `"Tarea agregada correctamente", ${task.name}"`,
+          text: `Tarea agregada correctamente`,
           icon: "success",
           confirmButtonText: "Aceptar",
         });
-        console.log(newTask);
+        console.log(allTasks);
+        setTaskList(allTasks.tasks);
       } catch (error) {
         Swal.fire({
           title: "Error",

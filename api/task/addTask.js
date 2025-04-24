@@ -13,7 +13,10 @@ export default async function handler(req, res) {
   
     try {
       const newTask = await TaskModel.createTask(user.username, task);
-      return res.status(200).json({newTask});
+      if(newTask){
+          const tasks = await TaskModel.getAllTasks(user.username);
+          return res.status(200).json({tasks});
+      }
     } catch (error) {
       console.error("Error en addTask:", error);
       return res.status(500).json({ error: "Error interno del servidor" });
