@@ -67,18 +67,47 @@ export const TaskProvider = ({ children }) => {
       });
     }
   };
-  const deleteTask = (index, task) => {
+  const deleteTask = async (index, task) => {
+    /*
     setTaskDeleted([...taskDeleted, task]);
     setTaskList(taskList.filter((_, i) => i !== index));
+    */
     Swal.fire({
       icon: "success",
       title: "Task deleted",
       text: `The task ${task.name} has been deleted`,
     });
   };
-  const completeTask = (index, task) => {
+  const completeTask = async (index, task) => {
+    try {
+      const completeTaskFetch = await fetch("/api/task/addTask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ task, user }),
+      });
+      const allTasks = await completeTaskFetch.json();
+      Swal.fire({
+        title: "Exito",
+        text: `Tarea completada correctamente`,
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
+      console.log(allTasks);
+      setTaskCompleted(allTasks.tasks);
+    } catch (error) {
+      console.error("Error completing task:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: `Error completing task ${task.name}`,
+      });
+    }
+    /*
     setTaskCompleted([...taskCompleted, task]);
     setTaskList(taskList.filter((_, i) => i !== index));
+     */
     Swal.fire({
       icon: "success",
       title: "Task completed",
