@@ -11,7 +11,7 @@ export default function TasksDeleted() {
           taskDeleted.map((task) => {
             return (
               <Task key={task.id_task}>
-                <h3 className="text-primary">{task.task_name}</h3>
+                <h3 className="text-primary">{task.nombre_task}</h3>
                 <p className="text-danger ">
                   <i>Deleted</i>
                 </p>
