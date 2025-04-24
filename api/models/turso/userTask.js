@@ -45,7 +45,7 @@ export class TaskModel {
             const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
             return rows[0]
         }catch (error) {
-            console.error("Error al obtener las tareas:", error);
+            return error
         }
     }
     static async getAllTasksCompleted(username){
