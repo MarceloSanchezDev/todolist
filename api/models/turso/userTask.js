@@ -45,8 +45,7 @@ export class TaskModel {
             const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
             return rows[0]
         }catch (error) {
-            throw new Error("Error al obtener las tareas:", error);
-            
+            return `Error getAllTask : ${error}`
         }
     }
     static async getAllTasksCompleted(username){
@@ -64,12 +63,11 @@ export class TaskModel {
             const id = crypto.randomUUID()
             const {name} = task
             await db.execute('INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)', [id, fecha, username, name, hora]);
+            const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
+            return rows[0]
         }catch (error) {
-            throw new Error("Error al crear la tarea:", error);
-            
+            return `Error createTask : ${error}`
         }
-        const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
-        return rows[0]
     }
     static async deleteTask(id_task){
         try{
