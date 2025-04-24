@@ -104,11 +104,6 @@ export const TaskProvider = ({ children }) => {
         text: `Error completing task ${task.nombre_task}`,
       });
     }
-    Swal.fire({
-      icon: "success",
-      title: "Task completed",
-      text: `The task ${task.name} has been completed`,
-    });
   };
   return (
     <TaskContext.Provider
