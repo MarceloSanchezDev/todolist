@@ -13,9 +13,9 @@ export default function NewTasks() {
       <div className="d-flex flex-column justify-content-between rounded align-items-center m-3">
         <TaskForm />
         {taskList && taskList.length > 0 ? (
-          taskList.map((task, index) => {
+          taskList.map((task) => {
             return (
-              <Task key={index}>
+              <Task key={task.id_task}>
                 <h3 className="text-primary">{task.nombre_task}</h3>
                 <div>
                   <p className="text-warning ">
@@ -28,13 +28,13 @@ export default function NewTasks() {
                 <div className="d-flex flex-row justify-content-between align-items-center">
                   <Button
                     bootstrapClass={"btn btn-danger m-1"}
-                    onClick={() => deleteTask(index, task)}
+                    onClick={() => deleteTask(task)}
                   >
                     delete task
                   </Button>
                   <Button
                     bootstrapClass={"btn btn-success m-1"}
-                    onClick={() => completeTask(index, task)}
+                    onClick={() => completeTask(task)}
                   >
                     complete task
                   </Button>
