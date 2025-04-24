@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     const { body } = req;
     try {
         const { username, task } = body;
-        const taskDeleted = await TaskModel.deleteTask(task);
+        const taskDeleted = await TaskModel.deleteTask(task.id_task);
         if(!taskDeleted) {
             throw new Error("Error al borrar la tarea")
         }
