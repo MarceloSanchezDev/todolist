@@ -67,7 +67,7 @@ export const TaskProvider = ({ children }) => {
       });
     }
   };
-  const deleteTask = async (index, task) => {
+  const deleteTask = async (task) => {
     /*
     setTaskDeleted([...taskDeleted, task]);
     setTaskList(taskList.filter((_, i) => i !== index));
@@ -78,7 +78,7 @@ export const TaskProvider = ({ children }) => {
       text: `The task ${task.name} has been deleted`,
     });
   };
-  const completeTask = async (index, task) => {
+  const completeTask = async (task) => {
     try {
       const completeTaskFetch = await fetch("/api/task/completeTask", {
         method: "POST",

@@ -109,7 +109,7 @@ export class TaskModel {
             hour12: false
           });
             const {rows} = await db.execute('SELECT * FROM user_task WHERE id_task = ?', [id_task]);
-            const {fecha, user_username, nombre_task, hora} = rows[0]
+            const {fecha, user_username, nombre_task, hora} = rows
             const id = crypto.randomUUID()
             await db.execute('INSERT INTO user_task_completed (id_task_completed, fecha, user_username, nombre_task_completed, hora, hora_completada,fecha_completada) VALUES (?, ?, ?, ?, ?,?,?)', [id, fecha, user_username, nombre_task, hora,horaCompletada, fechaCompletada]);
             await db.execute('DELETE FROM user_task WHERE id_task = ?', [id_task]);
