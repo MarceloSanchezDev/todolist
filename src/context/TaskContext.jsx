@@ -11,6 +11,7 @@ export const TaskProvider = ({ children }) => {
   const [taskDeleted, setTaskDeleted] = useState([]);
   const { user } = useAuthContext();
   useEffect(() => {
+    if (!user) return;
     const getAllTasks = async () => {
       try {
         const response = await fetch("/api/task/allTask", {
