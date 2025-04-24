@@ -16,7 +16,7 @@ export const useFetch = (url, method, objeto) => {
             method: method,
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(objeto),
-            signal: controller.signal, // ✅ Agregado correctamente
+            signal: controller.signal,
           });
           const json = await response.json();
           setData(json);
@@ -31,7 +31,7 @@ export const useFetch = (url, method, objeto) => {
 
       fetchData();
 
-      return () => controller.abort(); // ✅ Ejecutás el abort
+      return () => controller.abort();
     }
   }, []);
 

@@ -46,7 +46,7 @@ export class TaskModel {
             return rows[0]
         }catch (error) {
           console.error("Error al obtener las tareas:", error);
-            return `Error getAllTask : ${error}`
+            return error
         }
     }
     static async getAllTasksCompleted(username){
@@ -54,7 +54,8 @@ export class TaskModel {
             const {rows} = await db.execute('SELECT * FROM user_task_completed WHERE user_username = ?', [username]);
             return rows[0]
         }catch (error) {
-            console.error("Error al obtener las tareas Completadas:", error);
+          console.error("Error al obtener las tareas:", error);
+            return error
         }
     }
     static async createTask(username, task){
@@ -67,8 +68,8 @@ export class TaskModel {
             const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
             return rows[0]
         }catch (error) {
-          console.error("Error al crear la tarea:", error);
-            return `Error createTask : ${error}`
+          console.error("Error al crear la tareas:", error);
+          return error
         }
     }
     static async deleteTask(id_task){
