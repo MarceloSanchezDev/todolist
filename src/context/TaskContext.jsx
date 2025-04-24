@@ -11,7 +11,7 @@ export const TaskProvider = ({ children }) => {
   const [taskCompleted, setTaskCompleted] = useState([]);
   const [taskDeleted, setTaskDeleted] = useState([]);
   const { user } = useAuthContext();
-  const { data } = useFetch("/api/task/allTasks", "POST", user);
+  const { data } = useFetch("/api/task/allTask", "POST", user);
   console.log(taskCompleted, taskDeleted, taskList);
   useEffect(() => {
     setTaskList(data);
