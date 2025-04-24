@@ -115,6 +115,7 @@ export class TaskModel {
             await db.execute('DELETE FROM user_task WHERE id_task = ?', [id_task]);
         }catch (error) {
             console.error("Error al completar la tarea:", error);
+            return error
         }
         const {rows} = await db.execute('SELECT * FROM user_task');
         if (rows.length === 1) {
