@@ -59,8 +59,8 @@ export class TaskModel {
             return error
         }
     }
-    static async createTask(username, task){
-        
+    static async createTask(input){
+            const {username, task} = input
             const  fecha = new Date().toISOString().split('T')[0]
             const  hora = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
             const id = crypto.randomUUID()
