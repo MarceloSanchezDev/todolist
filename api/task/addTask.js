@@ -5,11 +5,14 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: "Método no permitido" });
     }
     const { body } = req;
-    
-        
+    try {
         const { user, task } = body;
         const {username} = user
         const newTask = await UserModel.createTask(username,task);
-       res.status(200).json(newTask);
+        res.status(200).json(newTask);
+    }catch (error) {
+        return error
+    }
+        
      
 }
