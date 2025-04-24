@@ -67,10 +67,7 @@ export const TaskProvider = ({ children }) => {
     }
   };
   const deleteTask = async (task) => {
-    const { id_task } = task;
     setTaskDeleted([...taskDeleted, task]);
-    setTaskList(taskList.filter((_, i) => i !== id_task));
-
     Swal.fire({
       icon: "success",
       title: "Task deleted",
