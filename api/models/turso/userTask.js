@@ -45,7 +45,8 @@ export class TaskModel {
             const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
             return rows[0]
         }catch (error) {
-            return error
+            throw new Error("Error al obtener las tareas:", error);
+            
         }
     }
     static async getAllTasksCompleted(username){
@@ -64,7 +65,8 @@ export class TaskModel {
             const {name} = task
             await db.execute('INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)', [id, fecha, username, name, hora]);
         }catch (error) {
-            console.error("Error al crear la tarea:", error);
+            throw new Error("Error al crear la tarea:", error);
+            
         }
         const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
         return rows[0]
