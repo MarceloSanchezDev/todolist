@@ -13,6 +13,7 @@ export const TaskProvider = ({ children }) => {
   const { user } = useAuthContext();
   const { data } = useFetch("/api/task/allTask", "POST", user);
   console.log(taskCompleted, taskDeleted, taskList);
+  console.log(data);
   useEffect(() => {
     setTaskList(data);
   }, []);
