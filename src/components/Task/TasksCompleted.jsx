@@ -12,9 +12,23 @@ export default function TasksCompleted() {
             return (
               <Task key={index}>
                 <h3 className="text-primary">{task.nombre_task_completed}</h3>
-                <p className="text-success ">
-                  <i>Completed</i>
-                </p>
+                <div>
+                  <p className="text-warning ">
+                    <i>Created on: {task.fecha}</i>
+                  </p>
+                  <p className="text-warning ">
+                    <i>Created at: {task.hora}</i>
+                  </p>
+                  <p className="text-success ">
+                    <i>Completed on: {task.fecha_completada}</i>
+                  </p>
+                  <p className="text-success ">
+                    <i>Completed at: {task.hora_completada}</i>
+                  </p>
+                  <p className="text-success ">
+                    <i>Completed</i>
+                  </p>
+                </div>
               </Task>
             );
           })
