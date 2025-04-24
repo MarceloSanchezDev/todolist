@@ -29,7 +29,7 @@ export const TaskProvider = ({ children }) => {
       }
     };
     getAllTasks();
-  }, []);
+  }, [user]);
   const newTask = async (task) => {
     if (task.name.length > 4) {
       try {
