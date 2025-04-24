@@ -80,7 +80,7 @@ export const TaskProvider = ({ children }) => {
   };
   const completeTask = async (index, task) => {
     try {
-      const completeTaskFetch = await fetch("/api/task/addTask", {
+      const completeTaskFetch = await fetch("/api/task/completeTask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
