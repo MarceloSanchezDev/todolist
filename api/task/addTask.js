@@ -1,4 +1,4 @@
-import { UserModel } from "../models/turso/userTask.js";
+import { TaskModel } from "../models/turso/userTask.js";
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     }
   
     try {
-      const newTask = await UserModel.createTask(user.username, task);
+      const newTask = await TaskModel.createTask(user.username, task);
       return res.status(200).json({newTask});
     } catch (error) {
       console.error("Error en addTask:", error);

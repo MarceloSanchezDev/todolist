@@ -1,4 +1,4 @@
-import { UserModel } from "../models/turso/userTask.js";
+import { TaskModel } from "../models/turso/userTask.js";
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
@@ -9,8 +9,8 @@ export default async function handler(req, res) {
 
         const { user } = body;
         const { username } = user;
-        const tasks = await UserModel.getAllTasks(username);
-        const tasksCompleted = await UserModel.getAllTasksCompleted(username);
+        const tasks = await TaskModel.getAllTasks(username);
+        const tasksCompleted = await TaskModel.getAllTasksCompleted(username);
 
         res.status(200).json({ tasks, tasksCompleted });
    

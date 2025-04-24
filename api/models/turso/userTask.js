@@ -41,14 +41,13 @@ await db.execute(`
   `);
 export class TaskModel {
     static async getAllTasks(username){
-        /*try{
+        try{
             const {rows} = await db.execute('SELECT * FROM user_task WHERE user_username = ?', [username]);
             return rows[0]
         }catch (error) {
           console.error("Error al obtener las tareas:", error);
-            return error
-        } */
-       return['task1', 'task2', 'task3',username]
+          throw new Error("No se pudo obtener las tareas");
+        } 
     }
     static async getAllTasksCompleted(username){
         try{
@@ -61,13 +60,19 @@ export class TaskModel {
     }
     static async createTask(username, task) {
       try {
+        const fecha = new Date().toISOString().split('T')[0];
+        const hora = new Date().toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        });
         const id = crypto.randomUUID();
         const { name } = task;
     
         await db.execute(
-          'INSERT INTO user_task (id_task, user_username, nombre_task) VALUES ( ?, ?, ?)',
-          [id, username, name]
-        )
+          'INSERT INTO user_task (id_task, fecha, user_username, nombre_task, hora) VALUES (?, ?, ?, ?, ?)',
+          [id, fecha, username, name, hora]
+        );
     
         const { rows } = await db.execute(
           'SELECT * FROM user_task WHERE user_username = ?',
