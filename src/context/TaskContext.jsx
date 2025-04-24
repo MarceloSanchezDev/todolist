@@ -101,7 +101,7 @@ export const TaskProvider = ({ children }) => {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: `Error completing task ${task.name}`,
+        text: `Error completing task ${task.nombre_task}`,
       });
     }
     Swal.fire({
