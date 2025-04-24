@@ -1,6 +1,9 @@
 import { UserModel } from "../models/turso/userTask.js";
 
 export default async function handler(req, res) {
+    if (req.method !== "POST") {
+        return res.status(405).json({ message: "Method Not Allowed" });
+      }
     const { body } = req;
     try {
         /*

@@ -7,35 +7,38 @@ export const useFetch = (url, method, objeto) => {
 
   useEffect(() => {
     if (objeto) {
-      console.log(objeto);
       const controller = new AbortController();
+
       const fetchData = async () => {
         setLoading(true);
         try {
-          const response = await fetch(
-            url,
-            {
-              method: method,
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(objeto),
-            },
-            controller
-          );
+          const response = await fetch(url, {
+            method: method,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(objeto),
+            signal: controller.signal, // ✅ Agregado correctamente
+          });
+
           if (!response.ok) {
             throw new Error("Error al obtener datos");
           }
+
           const json = await response.json();
           setData(json);
         } catch (error) {
-          setError(error);
+          if (error.name !== "AbortError") {
+            setError(error);
+          }
         } finally {
           setLoading(false);
         }
       };
+
       fetchData();
 
-      return () => controller.abort;
+      return () => controller.abort(); // ✅ Ejecutás el abort
     }
-  }, []);
+  }, [url, method, objeto]); // ✅ Añadido como dependencia
+
   return { data, loading, error };
 };
