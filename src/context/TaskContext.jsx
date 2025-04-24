@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 import { useAuthContext } from "./AuthContext.jsx";
@@ -10,7 +10,25 @@ export const TaskProvider = ({ children }) => {
   const [taskCompleted, setTaskCompleted] = useState([]);
   const [taskDeleted, setTaskDeleted] = useState([]);
   const { user } = useAuthContext();
-
+  useEffect(() => {
+    const getAllTasks = async () => {
+      try {
+        const response = await fetch("/api/task/allTask", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ user }),
+        });
+        const { tasks, tasksCompleted } = await response.json();
+        setTaskList(tasks);
+        setTaskCompleted(tasksCompleted);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      }
+    };
+    getAllTasks();
+  }, []);
   const newTask = async (task) => {
     if (task.name.length > 4) {
       try {
