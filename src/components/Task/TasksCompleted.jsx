@@ -11,7 +11,7 @@ export default function TasksCompleted() {
           taskCompleted.map((task, index) => {
             return (
               <Task key={index}>
-                <h3 className="text-primary">{task.name}</h3>
+                <h3 className="text-primary">{task.nombre_task}</h3>
                 <p className="text-success ">
                   <i>Completed</i>
                 </p>
