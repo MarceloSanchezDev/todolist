@@ -12,6 +12,9 @@ export default async function handler(req, res) {
         const tasks = await UserModel.getAllTasks(username);
         const tasksCompleted = await UserModel.getAllTasksCompleted(username);
 
+        if (!tasks || !tasksCompleted) {
+            return res.status(404).json({ message: "No se encontraron tareas" });
+        }
         res.status(200).json({ tasks, tasksCompleted });
     } catch (error) {
         return res.status(400).json({ message: "Error al obtener las tareas" , error});
