@@ -47,7 +47,6 @@ export const TaskProvider = ({ children }) => {
           icon: "success",
           confirmButtonText: "Aceptar",
         });
-        console.log(allTasks);
         setTaskList(allTasks.tasks);
       } catch (error) {
         Swal.fire({
@@ -68,14 +67,14 @@ export const TaskProvider = ({ children }) => {
     }
   };
   const deleteTask = async (task) => {
-    /*
+    const { id_task } = task;
     setTaskDeleted([...taskDeleted, task]);
-    setTaskList(taskList.filter((_, i) => i !== index));
-    */
+    setTaskList(taskList.filter((_, i) => i !== id_task));
+
     Swal.fire({
       icon: "success",
       title: "Task deleted",
-      text: `The task ${task.name} has been deleted`,
+      text: `The task ${task.nombre_task} has been deleted`,
     });
   };
   const completeTask = async (task) => {
