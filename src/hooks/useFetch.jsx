@@ -38,7 +38,7 @@ export const useFetch = (url, method, objeto) => {
 
       return () => controller.abort(); // ✅ Ejecutás el abort
     }
-  }, [url, method, objeto]); // ✅ Añadido como dependencia
+  }, []);
 
   return { data, loading, error };
 };
