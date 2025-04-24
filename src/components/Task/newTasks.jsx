@@ -18,10 +18,10 @@ export default function NewTasks() {
               <Task key={index}>
                 <h3 className="text-primary">{task.nombre_task}</h3>
                 <div>
-                  <p className="text-muted ">
+                  <p className="text-warning ">
                     <i>Created on: {task.fecha}</i>
                   </p>
-                  <p className="text-muted ">
+                  <p className="text-warning ">
                     <i>Created at: {task.hora}</i>
                   </p>
                 </div>
